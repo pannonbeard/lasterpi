@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Pi Laser Kiosk</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div id="title">Laser Controller</div>
+      <div id="statusBadge" class="status idle">Idle</div>
+    </header>
+
+    <main>
+      <section id="controls">
+        <div class="row">
+          <label class="fileLabel">
+            <input id="fileInput" type="file" accept=".gcode,.nc,.txt" />
+            <span class="btn">Choose File</span>
+          </label>
+          <button id="uploadBtn" class="btn primary">Upload</button>
+        </div>
+
+        <div class="row">
+          <div class="fileName" id="currentFile">No file</div>
+        </div>
+
+        <div class="row controlButtons">
+          <button id="startBtn" class="btn big">Start</button>
+          <button id="stopBtn" class="btn big danger">Stop</button>
+        </div>
+
+        <div class="row progressRow">
+          <div id="progressBar">
+            <div id="progressFill" style="width:0%"></div>
+          </div>
+          <div id="progressText">0% • 0 / 0</div>
+        </div>
+      </section>
+
+      <section id="manual">
+        <div class="manual-row">
+          <div class="jog-grid">
+            <button class="jog btn small" data-axis="Y" data-dir="+" title="Y+">Y+</button>
+            <button class="jog btn small" data-axis="X" data-dir="-" title="X-">X-</button>
+            <button class="jog btn small" data-axis="X" data-dir="+" title="X+">X+</button>
+            <button class="jog btn small" data-axis="Y" data-dir="- " title="Y-">Y-</button>
+          </div>
+          <div class="laser-controls">
+            <button id="laserOn" class="btn small">Laser ON</button>
+            <button id="laserOff" class="btn small danger">Laser OFF</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="logSection">
+        <div class="logHeader">
+          <div>Log</div>
+          <div id="elapsed">00:00</div>
+        </div>
+        <pre id="log" tabindex="0"></pre>
+      </section>
+    </main>
+
+    <footer>
+      <small>Pi Local • Auto-reconnect enabled</small>
+    </footer>
+  </div>
+
+  <script src="/main.js"></script>
+</body>
+</html>

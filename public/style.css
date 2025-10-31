@@ -1,0 +1,68 @@
+/* Touch/kiosk-friendly layout, optimized for small 5" screens */
+/* Use big touch targets and responsive layout for portrait/landscape */
+
+:root{
+  --bg:#0b0b0b;
+  --card:#111;
+  --accent:#00bcd4;
+  --danger:#ff5252;
+  --text:#e8eef2;
+  --muted:#9aa6ae;
+  --gap:8px;
+  --big:18vw; /* button sizing scales on small screens */
+}
+
+*{box-sizing:border-box}
+html,body,#app{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--text)}
+#app{display:flex;flex-direction:column;padding:10px}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:6px 4px}
+#title{font-weight:700;font-size:1.1rem}
+.status{padding:6px 10px;border-radius:8px;font-weight:600;font-size:0.9rem}
+.status.idle{background:#21313a;color:var(--muted)}
+.status.running{background:linear-gradient(90deg,var(--accent),#00ffdd);color:#001}
+.status.error{background:var(--danger);color:#fff}
+
+/* main layout */
+main{display:flex;flex-direction:column;gap:10px;flex:1;overflow:hidden}
+
+section{background:var(--card);border-radius:12px;padding:10px;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+
+#controls .row{display:flex;gap:8px;align-items:center}
+.fileLabel{flex:1;display:flex}
+.fileLabel input{display:none}
+.fileLabel .btn{flex:1;text-align:center}
+
+.btn{
+  background:#1a1f23;border:none;color:var(--text);padding:10px;border-radius:10px;font-weight:700;
+  touch-action:manipulation;font-size:1rem;
+}
+.btn.primary{background:var(--accent);color:#002b30}
+.btn.danger{background:var(--danger);color:#fff}
+.btn.big{flex:1;padding:14px;font-size:1.2rem}
+.btn.small{padding:8px;font-size:0.9rem}
+.fileName{flex:1;color:var(--muted);font-size:0.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* progress */
+.progressRow{display:flex;flex-direction:column;gap:6px}
+#progressBar{height:18px;background:#060808;border-radius:12px;overflow:hidden}
+#progressFill{height:100%;background:linear-gradient(90deg,var(--accent),#12e1d9);width:0%}
+#progressText{font-size:0.85rem;color:var(--muted)}
+
+/* manual & jog */
+.manual-row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.jog-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;width:60%}
+.laser-controls{display:flex;flex-direction:column;gap:6px;width:40%}
+
+/* log */
+.logHeader{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:var(--muted)}
+#log{height:120px;overflow:auto;background:#040404;border-radius:8px;padding:8px;color:#dff;white-space:pre-wrap;font-size:0.75rem;line-height:1.1;}
+
+/* footer */
+footer{display:flex;justify-content:center;padding:6px;color:var(--muted);font-size:0.75rem}
+
+/* responsive tweaks for very small screens / portrait */
+@media (max-width:480px){
+  .btn.big{font-size:1rem;padding:12px}
+  #log{height:100px;font-size:0.72rem}
+}
