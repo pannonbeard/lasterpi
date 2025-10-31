@@ -5,7 +5,7 @@ On your PI Run:
 
 ```
 sudo apt update
-sudo apt install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox chromium-browser
+sudo apt install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox chromium
 ```
 
 To Autostart Chromium in Kisok mode in Put the following in `~/.config/openbox/autostart`
